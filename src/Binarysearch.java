@@ -88,8 +88,36 @@ public class Binarysearch {
 	 * @param firstIndex - the first index of the remaining values (inclusive)
 	 * @param lastIndex - the last index of the remaining values (inclusive)
 	 */
-	private void remainingElements(int array[], int firstIndex, int lastIndex) {
-		// TODO: print remaining elements
+	public void remainingElements(int array[], int firstIndex, int lastIndex) {
 		
+		/* calculate spacing.
+		 * spacing between elements is the printed size of the largest number, plus a space.
+		 */
+		final int spacing = Integer.toString(array[array.length-1]).length() + 1;
+		
+		
+		/* calculate the offset*/
+		final int fullWidth = array.length * spacing;							// the printed size of the full array
+		final int remainingWidth = (1 + lastIndex - firstIndex) * spacing;		// the printed size of the remaining array
+		final int offset = (fullWidth - remainingWidth) / 2;					// the left-offset to center the remaining array below the full array
+		
+		
+		/* print offset if not negative or zero */
+		
+		if (offset > 0)
+		{
+			String offsetFormat = String.format("%ds", offset);				// #s		-- eg. 20s 
+			System.out.printf('%'+offsetFormat, "");						// % + #s 	-- eg. %20s
+		}
+		
+		
+		/* print elements */
+		
+		String format = String.format("%dd", -spacing);						// #d		-- eg. -4d
+		
+		for (int i = firstIndex; i <= lastIndex; ++i)						// % + #d	-- eg. %-4d
+			System.out.printf('%'+format, array[i]);
+		
+		System.out.print("\n\n");
 	}
 }
