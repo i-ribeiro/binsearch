@@ -1,3 +1,7 @@
+import java.util.stream.IntStream;
+import java.security.SecureRandom;
+import java.util.Arrays;
+
 /**
  * Recursive and non-recursive binary search algorithms.
  * Helper method to generate sorted random integer arrays included. 
@@ -10,7 +14,7 @@
 public class Binarysearch {
 	
 /**** Constructors ****/
-	
+
 	/**
 	 * Default constructor.
 	 */
@@ -58,7 +62,22 @@ public class Binarysearch {
 	public int[] generateRandomInts(int size, int min, int max) {
 		// TODO: Generate sorted random ints
 		
-		return null;
+		// early out if size is invalid ( <1 )
+		if (size < 1)
+		{
+			System.out.println("ERROR: size is less than 1.");
+			return null;
+		}
+		
+		// generate random values
+		IntStream randInt = new SecureRandom().ints(size, min + 1, max);
+		int[] values = randInt.sorted().toArray();
+		
+		// print values
+		System.out.println(Arrays.toString(values));
+		
+		// return values
+		return values;
 	}
 	
 	/**
