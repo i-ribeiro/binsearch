@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 /**
  * Demonstrates and tests the Binarysearch class interactively. 
@@ -15,7 +16,6 @@ public class Lab3binsearchTest {
 	 */
 	public static void main(String[] args) {
 		
-		// TODO: add exception handling
 		Scanner keyboard = new Scanner(System.in);	// user input stream from keyboard
 		
 		
@@ -25,7 +25,7 @@ public class Lab3binsearchTest {
 		
 		do {
 			// print menu options
-			System.out.println(
+			System.out.println(		// TODO: change to print() so that user input is in line with the prompt 
 				"Select your option in the menu below: \n"
 				+ "1. Initialize and populate an array of 20 random integers. \n"
 				+ "2. Perform a recursive binary search. \n"
@@ -34,7 +34,16 @@ public class Lab3binsearchTest {
 				+ " >");
 			
 			// get input
-			int optionInput = keyboard.nextInt();
+			int optionInput = -1;	// invalid value in case of input mismatch
+			
+			try {
+				
+				optionInput = keyboard.nextInt();
+				
+			} catch (InputMismatchException e) {
+				
+				keyboard.nextLine();	// flush buffer due to scanner bug 
+			}
 			
 			switch (optionInput) {
 			
