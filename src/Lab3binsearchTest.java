@@ -25,7 +25,7 @@ public class Lab3binsearchTest {
 		
 		do {
 			// print menu options
-			System.out.println(		// TODO: change to print() so that user input is in line with the prompt 
+			System.out.print(
 				"Select your option in the menu below: \n"
 				+ "1. Initialize and populate an array of 20 random integers. \n"
 				+ "2. Perform a recursive binary search. \n"
