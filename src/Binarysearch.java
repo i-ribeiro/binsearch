@@ -58,7 +58,7 @@ public class Binarysearch {
 	 * @param lower - the lower bound of generated values (exclusive)
 	 * @param upper - the upper bound of generated values (exclusive)
 	 * @return the generated array.
-	 */
+	 */	// TODO: fix param name / comment mismatch for bounds params
 	public int[] generateRandomInts(int size, int min, int max) {
 		// TODO: Generate sorted random ints
 		
@@ -74,7 +74,7 @@ public class Binarysearch {
 		int[] values = randInt.sorted().toArray();
 		
 		// print values
-		System.out.println(Arrays.toString(values));
+		System.out.println(Arrays.toString(values));	// TODO: add another newline
 		
 		// return values
 		return values;
