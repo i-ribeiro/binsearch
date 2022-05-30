@@ -55,12 +55,11 @@ public class Binarysearch {
 	 * Uses SecureRandom to generate a sorted array of random integers.
 	 * Prints the generated array to the screen.
 	 * @param size - the size of the array
-	 * @param lower - the lower bound of generated values (exclusive)
-	 * @param upper - the upper bound of generated values (exclusive)
+	 * @param lowerBound - the lower bound of generated values (exclusive)
+	 * @param upperBound - the upper bound of generated values (exclusive)
 	 * @return the generated array.
-	 */	// TODO: fix param name / comment mismatch for bounds params
-	public int[] generateRandomInts(int size, int min, int max) {
-		// TODO: Generate sorted random ints
+	 */
+	public int[] generateRandomInts(int size, int lowerBound, int upperBound) {
 		
 		// early out if size is invalid ( <1 )
 		if (size < 1)
@@ -70,11 +69,14 @@ public class Binarysearch {
 		}
 		
 		// generate random values
-		IntStream randInt = new SecureRandom().ints(size, min + 1, max);
+		IntStream randInt = new SecureRandom().ints(size, lowerBound + 1, upperBound);
 		int[] values = randInt.sorted().toArray();
 		
 		// print values
-		System.out.println(Arrays.toString(values));	// TODO: add another newline
+		System.out.print(Arrays.toString(values) + "\n\n");
+		
+		
+		randInt.close();
 		
 		// return values
 		return values;
