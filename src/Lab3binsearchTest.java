@@ -8,8 +8,11 @@
  */
 public class Lab3binsearchTest {
 
+	/** Entry point to test the Binarysearch class. 
+	 * @param args - not used
+	 */
 	public static void main(String[] args) {
-		
+		// TODO: main menu
 		
 	}
 }
