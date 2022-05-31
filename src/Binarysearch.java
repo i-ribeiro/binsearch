@@ -13,17 +13,6 @@ import java.util.Arrays;
  */
 public class Binarysearch {
 	
-/**** Constructors ****/
-
-	/**
-	 * Default constructor.
-	 */
-	public Binarysearch() {
-		// TODO: Default constructor
-		
-	}
-	
-	
 /**** Methods ****/
 	
 	/**
@@ -76,14 +65,6 @@ public class Binarysearch {
 			this.remainingElements(array, firstIndex, lastIndex);
 		}
 		
-		
-		// TODO: move this to Lab3binsearchTest to match recursiveBinarySearch()
-		// if index is valid, the value was found
-		if (index >= 0)
-			System.out.printf("Number %d was found at index %d. \n\n", searchVal, index);
-		
-		else System.out.printf("Number %d was not found. \n\n", searchVal);
-		
 		return index;
 	}
 	
@@ -108,17 +89,22 @@ public class Binarysearch {
 			array[firstIndex] > searchVal
 			|| array[lastIndex] < searchVal)
 		{
-			System.out.printf("Number %d was not found. \n", searchVal);
 			return index;
 		}
 		
 		// check if value is at firstIndex
-		if (array[firstIndex] == searchVal)
-			index = lastIndex = firstIndex;
+		if (array[firstIndex] == searchVal) {
+			
+			index = firstIndex;
+			remainingElements(array, index, index);
+		}
 		
 		// check if value is at lastIndex
-		else if (array[lastIndex] == searchVal)
-			index = firstIndex = lastIndex;
+		else if (array[lastIndex] == searchVal) {
+			
+			index = firstIndex;
+			remainingElements(array, index, index);
+		}
 		
 		// otherwise, continue pruning 
 		else {
@@ -126,7 +112,7 @@ public class Binarysearch {
 			middle = (lastIndex - firstIndex) / 2 + firstIndex;
 			
 			if (middle == firstIndex || middle == lastIndex)	// check if there are only two elements remaining
-				return -1;
+				return index;
 			
 			else if (searchVal > array[middle]) {				// if searchVal is larger than middle value, prune lower half and recurse
 				
@@ -138,7 +124,11 @@ public class Binarysearch {
 				lastIndex = middle;
 				index = recursiveBinarySearch(array, searchVal, firstIndex, lastIndex);
 			}
-			else index = firstIndex = lastIndex = middle;		// searchVal is at the middle index
+			else {												// searchVal is at the middle index
+				
+				remainingElements(array, middle, middle);
+				index = firstIndex = lastIndex = middle;
+			}
 		}
 		
 		return index;

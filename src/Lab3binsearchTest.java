@@ -54,7 +54,8 @@ public class Lab3binsearchTest {
 			// get input
 			int optionInput = inputInt(keyboard, false);	// -1 on input mismatch
 			
-			int searchVal;
+			
+			int searchVal, index;
 			long timeInNano, timeOutNano;
 			long timeInMillis, timeOutMillis;
 			
@@ -62,12 +63,11 @@ public class Lab3binsearchTest {
 			
 			// generate random array
 			case 1:
+				System.out.println();
 				numbers = binsearch.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
 				break;
 				
 			// recursive binary search
-			// TODO: fix "Number not found" printing twice
-			// TODO: fix remaining elements not printing when search value found immediately
 			case 2:
 				if (numbers == null) {
 					
@@ -85,7 +85,7 @@ public class Lab3binsearchTest {
 				timeInMillis = System.currentTimeMillis();
 				
 				// search
-				int index = binsearch.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1);
+				index = binsearch.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1);
 				
 				//time out
 				timeOutNano = System.nanoTime();
@@ -94,9 +94,9 @@ public class Lab3binsearchTest {
 				
 				// if index is valid, the value was found
 				if (index >= 0)
-					System.out.printf("Number %d was found at index %d. \n\n", searchVal, index);
+					System.out.printf("Number %d was found at index %d. \n", searchVal, index);
 				
-				else System.out.printf("Number %d was not found. \n\n", searchVal);
+				else System.out.printf("Number %d was not found. \n", searchVal);
 				
 				// print time
 				System.out.printf("Time taken in nanoseconds: %d \n", timeOutNano - timeInNano);
@@ -122,12 +122,18 @@ public class Lab3binsearchTest {
 				timeInMillis = System.currentTimeMillis();
 				
 				// search
-				binsearch.nonRecursiveBinarySearch(numbers, searchVal);
+				index = binsearch.nonRecursiveBinarySearch(numbers, searchVal);
 
 				//time out
 				timeOutNano = System.nanoTime();
 				timeOutMillis = System.currentTimeMillis();
 				
+				
+				// if index is valid, the value was found
+				if (index >= 0)
+					System.out.printf("Number %d was found at index %d. \n", searchVal, index);
+				
+				else System.out.printf("Number %d was not found. \n", searchVal);
 				
 				// print time
 				System.out.printf("Time taken in nanoseconds: %d \n", timeOutNano - timeInNano);
@@ -147,11 +153,11 @@ public class Lab3binsearchTest {
 			
 		} while (exitFlag == false);	// stop loop if user selects Exit
 		
+		
+		keyboard.close();
+		
 		// print exit greeting
 		System.out.println("Exiting...Goodbye");
-		
-		// close keyboard input stream
-		keyboard.close();
 	}
 	
 	/**
