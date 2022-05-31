@@ -52,16 +52,9 @@ public class Lab3binsearchTest {
 				+ " >");
 			
 			// get input
-			int optionInput = -1;	// invalid value in case of input mismatch
+			int optionInput = inputInt(keyboard, false);	// -1 on input mismatch
 			
-			try {
-				
-				optionInput = keyboard.nextInt();
-				
-			} catch (InputMismatchException e) {
-				
-				keyboard.nextLine();	// flush buffer due to scanner bug 
-			}
+			int searchVal;
 			
 			switch (optionInput) {
 			
@@ -72,22 +65,28 @@ public class Lab3binsearchTest {
 				
 			// recursive binary search
 			// TODO: add timers
+			// TODO: fix "Number not found" printing twice
+			// TODO: fix remaining elements not printing when search value found immediately
 			case 2:
-				int searchVal = 29;
-				
 				if (numbers == null) {
 					
 					System.out.println("Generate values first.");
 					break;
 				}
 				
-				int index = binsearch.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1); // TODO: add searchVal input
+				// input search value
+				System.out.print("Please enter an integer value to search: ");
+				searchVal = inputInt(keyboard, true);
+				
+				
+				int index = binsearch.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1);
+				
 				
 				// if index is valid, the value was found
 				if (index >= 0)
 					System.out.printf("Number %d was found at index %d. \n\n", searchVal, index);
 				
-				else System.out.printf("Number %d was not found. \n\n", searchVal, 0);
+				else System.out.printf("Number %d was not found. \n\n", searchVal);
 				
 				break;
 				
@@ -100,7 +99,11 @@ public class Lab3binsearchTest {
 					break;
 				}
 				
-				binsearch.nonRecursiveBinarySearch(numbers, 29); // TODO: add searchVal input
+				// input search value
+				System.out.print("Please enter an integer value to search: ");
+				searchVal = inputInt(keyboard, true);
+				
+				binsearch.nonRecursiveBinarySearch(numbers, searchVal);
 				break;
 				
 			// exit
@@ -120,5 +123,35 @@ public class Lab3binsearchTest {
 		
 		// close keyboard input stream
 		keyboard.close();
+	}
+	
+	/**
+	 * Helper method to input an integer.
+	 * Includes functionality to loop until a valid value is entered.
+	 * @param input - user input stream
+	 * @param loop - whether to loop until a valid value is entered
+	 * @return a valid integer or -1 if loop is false
+	 */
+	private static int inputInt(Scanner input, boolean loop) {
+		
+		int n = -1;
+		boolean inputValid = false;	// input invalid by default
+		
+		do {
+			
+			try {
+				
+				n = input.nextInt();
+				inputValid = true;		// only called if nextInt() succeeds
+				
+			} catch (InputMismatchException e) {
+				
+				if (loop) System.out.print("Not a valid value. Try again > ");
+				input.nextLine();			// flush buffer due to scanner bug 
+			}
+			
+		} while (inputValid == false && loop == true);
+		
+		return n;
 	}
 }
