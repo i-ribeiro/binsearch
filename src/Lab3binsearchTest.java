@@ -10,14 +10,32 @@ import java.util.InputMismatchException;
  * CET-CS-Level 3
  */
 public class Lab3binsearchTest {
+	
+	/**
+	 * The array size to test.
+	 */
+	private static final int TEST_SIZE = 20;
+	
+	/**
+	 * The lower bound of the range of random values to test.
+	 */
+	private static final int TEST_BOUND_LOWER = 10;
+	
+	/**
+	 * The upper bound of the range of random values to test.
+	 */
+	private static final int TEST_BOUND_UPPER = 100;
+	
 
 	/** Entry point to test the Binarysearch class. 
 	 * @param args - not used
 	 */
 	public static void main(String[] args) {
 		
-		Scanner keyboard = new Scanner(System.in);	// user input stream from keyboard
+		Scanner keyboard = new Scanner(System.in);		// user input stream from keyboard
 		
+		Binarysearch binsearch = new Binarysearch();	// Binarysearch object to test
+		int[] numbers;
 		
 		/* Main menu loop */
 		
@@ -48,9 +66,8 @@ public class Lab3binsearchTest {
 			switch (optionInput) {
 			
 			// generate random array
-			// TODO: replace placeholder with call to Binarysearch::generateRandomInts()
 			case 1:
-				System.out.println("Option 1 placeholder");
+				numbers = binsearch.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
 				break;
 				
 			// recursive binary search
