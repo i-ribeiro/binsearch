@@ -77,6 +77,7 @@ public class Binarysearch {
 		}
 		
 		
+		// TODO: move this to Lab3binsearchTest to match recursiveBinarySearch()
 		// if index is valid, the value was found
 		if (index >= 0)
 			System.out.printf("Number %d was found at index %d. \n\n", searchVal, index);
@@ -93,10 +94,54 @@ public class Binarysearch {
 	 * @param searchVal - the value to search for
 	 * @param firstIndex - the first index of the remaining values (inclusive)
 	 * @param lastIndex - the last index of the remaining values (inclusive)
+	 * @return the index of the searchVal or -1.
 	 */
-	public void recursiveBinarySearch(int array[], int searchVal, int firstIndex, int lastIndex) {
-		// TODO: Recursive binary search
+	public int recursiveBinarySearch(int array[], int searchVal, int firstIndex, int lastIndex) {
+
+		int middle;
+		int index = -1;
 		
+		remainingElements(array, firstIndex, lastIndex);
+		
+		// early out if value is out of bounds 
+		if (
+			array[firstIndex] > searchVal
+			|| array[lastIndex] < searchVal)
+		{
+			System.out.printf("Number %d was not found. \n", searchVal);
+			return index;
+		}
+		
+		// check if value is at firstIndex
+		if (array[firstIndex] == searchVal)
+			index = lastIndex = firstIndex;
+		
+		// check if value is at lastIndex
+		else if (array[lastIndex] == searchVal)
+			index = firstIndex = lastIndex;
+		
+		// otherwise, continue pruning 
+		else {
+			
+			middle = (lastIndex - firstIndex) / 2 + firstIndex;
+			
+			if (middle == firstIndex || middle == lastIndex)	// check if there are only two elements remaining
+				return -1;
+			
+			else if (searchVal > array[middle]) {				// if searchVal is larger than middle value, prune lower half and recurse
+				
+				firstIndex = middle;
+				index = recursiveBinarySearch(array, searchVal, firstIndex, lastIndex);
+			}
+			else if (searchVal < array[middle]) {				// if searchVal is smaller than middle value, prune upper half and recurse
+				
+				lastIndex = middle;
+				index = recursiveBinarySearch(array, searchVal, firstIndex, lastIndex);
+			}
+			else index = firstIndex = lastIndex = middle;		// searchVal is at the middle index
+		}
+		
+		return index;
 	}
 	
 	/**

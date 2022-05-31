@@ -71,9 +71,24 @@ public class Lab3binsearchTest {
 				break;
 				
 			// recursive binary search
-			// TODO: replace placeholder with call to Binarysearch::recursiveBinarySearch()
+			// TODO: add timers
 			case 2:
-				System.out.println("Option 2 placeholder");
+				int searchVal = 29;
+				
+				if (numbers == null) {
+					
+					System.out.println("Generate values first.");
+					break;
+				}
+				
+				int index = binsearch.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1); // TODO: add searchVal input
+				
+				// if index is valid, the value was found
+				if (index >= 0)
+					System.out.printf("Number %d was found at index %d. \n\n", searchVal, index);
+				
+				else System.out.printf("Number %d was not found. \n\n", searchVal, 0);
+				
 				break;
 				
 			// non-recursive binary search
