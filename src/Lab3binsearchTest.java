@@ -35,7 +35,7 @@ public class Lab3binsearchTest {
 		Scanner keyboard = new Scanner(System.in);		// user input stream from keyboard
 		
 		Binarysearch binsearch = new Binarysearch();	// Binarysearch object to test
-		int[] numbers;
+		int[] numbers = null;
 		
 		/* Main menu loop */
 		
@@ -77,9 +77,15 @@ public class Lab3binsearchTest {
 				break;
 				
 			// non-recursive binary search
-			// TODO: replace placeholder with call to Binarysearch::nonRecursiveBinarySearch()
+			// TODO: add timers
 			case 3:
-				System.out.println("Option 3 placeholder");
+				if (numbers == null) {
+					
+					System.out.println("Generate values first.");
+					break;
+				}
+				
+				binsearch.nonRecursiveBinarySearch(numbers, 29); // TODO: add searchVal input
 				break;
 				
 			// exit
