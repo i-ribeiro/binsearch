@@ -55,6 +55,8 @@ public class Lab3binsearchTest {
 			int optionInput = inputInt(keyboard, false);	// -1 on input mismatch
 			
 			int searchVal;
+			long timeInNano, timeOutNano;
+			long timeInMillis, timeOutMillis;
 			
 			switch (optionInput) {
 			
@@ -64,7 +66,6 @@ public class Lab3binsearchTest {
 				break;
 				
 			// recursive binary search
-			// TODO: add timers
 			// TODO: fix "Number not found" printing twice
 			// TODO: fix remaining elements not printing when search value found immediately
 			case 2:
@@ -79,7 +80,16 @@ public class Lab3binsearchTest {
 				searchVal = inputInt(keyboard, true);
 				
 				
+				// time in
+				timeInNano = System.nanoTime();
+				timeInMillis = System.currentTimeMillis();
+				
+				// search
 				int index = binsearch.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1);
+				
+				//time out
+				timeOutNano = System.nanoTime();
+				timeOutMillis = System.currentTimeMillis();
 				
 				
 				// if index is valid, the value was found
@@ -88,10 +98,13 @@ public class Lab3binsearchTest {
 				
 				else System.out.printf("Number %d was not found. \n\n", searchVal);
 				
+				// print time
+				System.out.printf("Time taken in nanoseconds: %d \n", timeOutNano - timeInNano);
+				System.out.printf("Time taken in milliseconds: %d \n\n", timeOutMillis - timeInMillis);
+				
 				break;
 				
 			// non-recursive binary search
-			// TODO: add timers
 			case 3:
 				if (numbers == null) {
 					
@@ -102,8 +115,24 @@ public class Lab3binsearchTest {
 				// input search value
 				System.out.print("Please enter an integer value to search: ");
 				searchVal = inputInt(keyboard, true);
+
 				
+				// time in
+				timeInNano = System.nanoTime();
+				timeInMillis = System.currentTimeMillis();
+				
+				// search
 				binsearch.nonRecursiveBinarySearch(numbers, searchVal);
+
+				//time out
+				timeOutNano = System.nanoTime();
+				timeOutMillis = System.currentTimeMillis();
+				
+				
+				// print time
+				System.out.printf("Time taken in nanoseconds: %d \n", timeOutNano - timeInNano);
+				System.out.printf("Time taken in milliseconds: %d \n\n", timeOutMillis - timeInMillis);
+				
 				break;
 				
 			// exit
