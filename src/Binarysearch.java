@@ -33,9 +33,57 @@ public class Binarysearch {
 	 * @param searchVal - the value to search for
 	 * @return the index of the searchVal or -1.
 	 */
-	public void nonRecursiveBinarySearch(int array[], int searchVal) {
-		// TODO: Non-recursive binary search
+	public int nonRecursiveBinarySearch(int array[], int searchVal) {
 		
+		int firstIndex = 0;
+		int lastIndex = array.length - 1;
+		int middle;
+		
+		int index = -1;
+		
+		remainingElements(array, firstIndex, lastIndex);
+		
+		// early out if value is out of bounds 
+		if (
+			array[firstIndex] > searchVal
+			|| array[lastIndex] < searchVal)
+		{
+			System.out.printf("Number %d was not found. \n", searchVal);
+			return index;
+		}
+		
+		// loop until index is valid or all values searched
+		while (index == -1 && (firstIndex != lastIndex)) {
+			
+			// check if value is at firstIndex
+			if (array[firstIndex] == searchVal)
+				index = lastIndex = firstIndex;
+			
+			// check if value is at lastIndex
+			else if (array[lastIndex] == searchVal)
+				index = firstIndex = lastIndex;
+			
+			// otherwise, continue pruning 
+			else {
+				middle = (lastIndex - firstIndex) / 2 + firstIndex;
+				
+				if (middle == firstIndex || middle == lastIndex) break;		// check if there are only two elements remaining
+				else if (searchVal > array[middle]) firstIndex = middle;	// if searchVal is larger than middle value, prune lower half
+				else if (searchVal < array[middle]) lastIndex = middle;		// if searchVal is smaller than middle value, prune upper half
+				else index = firstIndex = lastIndex = middle;				// searchVal is at the middle index
+			}
+			
+			this.remainingElements(array, firstIndex, lastIndex);
+		}
+		
+		
+		// if index is valid, the value was found
+		if (index >= 0)
+			System.out.printf("Number %d was found at index %d. \n\n", searchVal, index);
+		
+		else System.out.printf("Number %d was not found. \n\n", searchVal);
+		
+		return index;
 	}
 	
 	/**
