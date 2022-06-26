@@ -215,8 +215,31 @@ public class SearchAndSort {
 	 * @param upperBound - the upper bound of generated values (exclusive)
 	 */
 	public static void bubbleSort(int size, int lowerBound, int upperBound) {
-		// TODO: implement bubble sort
 		
+		int[] array = generateRandomInts(size, lowerBound, upperBound, false);
+		
+		System.out.print("Bubble sort: Simple sorting algorithm - O(n2) Complexity - in-place \n\n");
+		
+		boolean sorted = false;
+		
+		while (sorted == false) {	// continue sorting until no out-of-order values are found
+			
+			sorted = true;
+			
+			for (int i = 1, j = 0; i < array.length; j = i++) { // look for out-of-order values 
+				
+				if (array[i] < array[j]) {
+					
+					int buffer = array[i];	// swap values
+					array[i] = array[j];
+					array[j] = buffer;
+					
+					sorted = false;	// not finished sorting if an out-of-order value is found
+				}
+			}
+		}
+		
+		System.out.print(Arrays.toString(array) + "\n\n");
 	}
 	
 	/**
