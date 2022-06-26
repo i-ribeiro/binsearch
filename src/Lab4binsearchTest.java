@@ -11,6 +11,8 @@ import java.util.InputMismatchException;
  */
 public class Lab4binsearchTest {
 	
+/* Test Constants */
+	
 	/**
 	 * The array size to test.
 	 */
@@ -26,6 +28,36 @@ public class Lab4binsearchTest {
 	 */
 	private static final int TEST_BOUND_UPPER = 100;
 	
+
+/* Menu Constants */
+	
+	/**
+	 * Menu option value to generate the integer array.
+	 */
+	private static final int MENU_GENERATE = 1;
+	
+	/**
+	 * Menu option value to search the integer array using the recursive binary search algorithm.
+	 */
+	private static final int MENU_RSEARCH = 2;
+	
+	/**
+	 * Menu option value to search the integer array using the non-recursive binary search algorithm.
+	 */
+	private static final int MENU_NRSEARCH = 3;
+	
+	/**
+	 * Menu option value to sort the integer array.
+	 */
+	private static final int MENU_SORT = 4;
+	
+	/**
+	 * Menu option value to exit.
+	 */
+	private static final int MENU_EXIT = 5;
+	
+
+/* Methods */
 
 	/** Entry point to test the Binarysearch class. 
 	 * @param args - not used
@@ -56,13 +88,13 @@ public class Lab4binsearchTest {
 			switch (optionInput) {
 			
 			// generate random array
-			case 1:
+			case MENU_GENERATE:
 				System.out.println();
 				numbers = binsearch.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
 				break;
 				
 			// recursive binary search
-			case 2:
+			case MENU_RSEARCH:
 				if (numbers == null) {
 					
 					System.out.println("Generate values first.");
@@ -99,7 +131,7 @@ public class Lab4binsearchTest {
 				break;
 				
 			// non-recursive binary search
-			case 3:
+			case MENU_NRSEARCH:
 				if (numbers == null) {
 					
 					System.out.println("Generate values first.");
@@ -136,7 +168,7 @@ public class Lab4binsearchTest {
 				break;
 				
 			// exit
-			case 4:
+			case MENU_EXIT:
 				exitFlag = true;
 				break;
 				
