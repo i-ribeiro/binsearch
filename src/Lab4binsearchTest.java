@@ -11,6 +11,8 @@ import java.util.InputMismatchException;
  */
 public class Lab4binsearchTest {
 	
+/* Test Constants */
+	
 	/**
 	 * The array size to test.
 	 */
@@ -26,6 +28,36 @@ public class Lab4binsearchTest {
 	 */
 	private static final int TEST_BOUND_UPPER = 100;
 	
+
+/* Menu Constants */
+	
+	/**
+	 * Menu option value to generate the integer array.
+	 */
+	private static final int MENU_GENERATE = 1;
+	
+	/**
+	 * Menu option value to search the integer array using the recursive binary search algorithm.
+	 */
+	private static final int MENU_RSEARCH = 2;
+	
+	/**
+	 * Menu option value to search the integer array using the non-recursive binary search algorithm.
+	 */
+	private static final int MENU_NRSEARCH = 3;
+	
+	/**
+	 * Menu option value to sort the integer array.
+	 */
+	private static final int MENU_SORT = 4;
+	
+	/**
+	 * Menu option value to exit.
+	 */
+	private static final int MENU_EXIT = 5;
+	
+
+/* Methods */
 
 	/** Entry point to test the Binarysearch class. 
 	 * @param args - not used
@@ -43,13 +75,7 @@ public class Lab4binsearchTest {
 		
 		do {
 			// print menu options
-			System.out.print(
-				"Select your option in the menu below: \n"
-				+ "1. Initialize and populate an array of 20 random integers. \n"
-				+ "2. Perform a recursive binary search. \n"
-				+ "3. Perform a non-recursive binary search. \n"
-				+ "4. Exit. \n"
-				+ " >");
+			printMenuOptions();
 			
 			// get input
 			int optionInput = inputInt(keyboard, false);	// -1 on input mismatch
@@ -62,13 +88,13 @@ public class Lab4binsearchTest {
 			switch (optionInput) {
 			
 			// generate random array
-			case 1:
+			case MENU_GENERATE:
 				System.out.println();
 				numbers = binsearch.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
 				break;
 				
 			// recursive binary search
-			case 2:
+			case MENU_RSEARCH:
 				if (numbers == null) {
 					
 					System.out.println("Generate values first.");
@@ -105,7 +131,7 @@ public class Lab4binsearchTest {
 				break;
 				
 			// non-recursive binary search
-			case 3:
+			case MENU_NRSEARCH:
 				if (numbers == null) {
 					
 					System.out.println("Generate values first.");
@@ -141,8 +167,12 @@ public class Lab4binsearchTest {
 				
 				break;
 				
+			// TODO: sort array
+			case MENU_SORT:
+				break;
+				
 			// exit
-			case 4:
+			case MENU_EXIT:
 				exitFlag = true;
 				break;
 				
@@ -158,6 +188,27 @@ public class Lab4binsearchTest {
 		
 		// print exit greeting
 		System.out.println("Exiting...Goodbye");
+	}
+	
+	/**
+	 * Helper method to print the main menu options .
+	 */
+	private static void printMenuOptions() {
+		
+		System.out.printf(
+				"Select your option in the menu below: \n"
+				+ "%d. Initialize and populate an array of %d random integers. \n"
+				+ "%d. Perform a recursive binary search. \n"
+				+ "%d. Perform a non-recursive binary search. \n"
+				+ "%d. Sort the array \n"
+				+ "%d. Exit. \n"
+				+ " >",
+				MENU_GENERATE,
+				TEST_SIZE,
+				MENU_RSEARCH,
+				MENU_NRSEARCH,
+				MENU_SORT,
+				MENU_EXIT);
 	}
 	
 	/**
