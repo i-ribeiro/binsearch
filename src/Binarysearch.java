@@ -22,7 +22,7 @@ public class Binarysearch {
 	 * @param searchVal - the value to search for
 	 * @return the index of the searchVal or -1.
 	 */
-	public int nonRecursiveBinarySearch(int array[], int searchVal) {
+	public static int nonRecursiveBinarySearch(int array[], int searchVal) {
 		
 		int firstIndex = 0;
 		int lastIndex = array.length - 1;
@@ -62,7 +62,7 @@ public class Binarysearch {
 				else index = firstIndex = lastIndex = middle;				// searchVal is at the middle index
 			}
 			
-			this.remainingElements(array, firstIndex, lastIndex);
+			remainingElements(array, firstIndex, lastIndex);
 		}
 		
 		return index;
@@ -77,7 +77,7 @@ public class Binarysearch {
 	 * @param lastIndex - the last index of the remaining values (inclusive)
 	 * @return the index of the searchVal or -1.
 	 */
-	public int recursiveBinarySearch(int array[], int searchVal, int firstIndex, int lastIndex) {
+	public static int recursiveBinarySearch(int array[], int searchVal, int firstIndex, int lastIndex) {
 
 		int middle;
 		int index = -1;
@@ -142,7 +142,7 @@ public class Binarysearch {
 	 * @param upperBound - the upper bound of generated values (exclusive)
 	 * @return the generated array.
 	 */
-	public int[] generateRandomInts(int size, int lowerBound, int upperBound) {
+	public static int[] generateRandomInts(int size, int lowerBound, int upperBound) {
 		
 		// early out if size is invalid ( <1 )
 		if (size < 1)
@@ -171,7 +171,7 @@ public class Binarysearch {
 	 * @param firstIndex - the first index of the remaining values (inclusive)
 	 * @param lastIndex - the last index of the remaining values (inclusive)
 	 */
-	public void remainingElements(int array[], int firstIndex, int lastIndex) {
+	public static void remainingElements(int array[], int firstIndex, int lastIndex) {
 		
 		/* calculate spacing.
 		 * spacing between elements is the printed size of the largest number, plus a space.

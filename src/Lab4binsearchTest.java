@@ -96,7 +96,6 @@ public class Lab4binsearchTest {
 		
 		Scanner keyboard = new Scanner(System.in);		// user input stream from keyboard
 		
-		Binarysearch binsearch = new Binarysearch();	// Binarysearch object to test
 		int[] numbers = null;
 		
 		/* Main menu loop */
@@ -120,7 +119,7 @@ public class Lab4binsearchTest {
 			// generate random array
 			case MENU_GENERATE:
 				System.out.println();
-				numbers = binsearch.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
+				numbers = Binarysearch.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
 				break;
 				
 			// recursive binary search
@@ -141,7 +140,7 @@ public class Lab4binsearchTest {
 				timeInMillis = System.currentTimeMillis();
 				
 				// search
-				index = binsearch.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1);
+				index = Binarysearch.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1);
 				
 				//time out
 				timeOutNano = System.nanoTime();
@@ -178,7 +177,7 @@ public class Lab4binsearchTest {
 				timeInMillis = System.currentTimeMillis();
 				
 				// search
-				index = binsearch.nonRecursiveBinarySearch(numbers, searchVal);
+				index = Binarysearch.nonRecursiveBinarySearch(numbers, searchVal);
 
 				//time out
 				timeOutNano = System.nanoTime();
