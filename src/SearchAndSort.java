@@ -207,4 +207,59 @@ public class SearchAndSort {
 		
 		System.out.print("\n\n");
 	}
+	
+	/**
+	 * Generates an array of random integers and sorts it using the Bubble Sort algorithm.
+	 * @param size - the size of the array
+	 * @param lowerBound - the lower bound of generated values (exclusive)
+	 * @param upperBound - the upper bound of generated values (exclusive)
+	 */
+	public static void bubbleSort(int size, int lowerBound, int upperBound) {
+		// TODO: implement bubble sort
+		
+	}
+	
+	/**
+	 * Generates an array of random integers and sorts it using the Insertion Sort algorithm.
+	 * @param size - the size of the array
+	 * @param lowerBound - the lower bound of generated values (exclusive)
+	 * @param upperBound - the upper bound of generated values (exclusive)
+	 */
+	public static void insertionSort(int size, int lowerBound, int upperBound) {
+		//TODO: implement insertion sort
+		
+	}
+	
+	/**
+	 * Generates an array of random integers and sorts it using the Selection Sort algorithm.
+	 * @param size - the size of the array
+	 * @param lowerBound - the lower bound of generated values (exclusive)
+	 * @param upperBound - the upper bound of generated values (exclusive)
+	 */
+	public static void selectionSort(int size, int lowerBound, int upperBound) {
+		// TODO: implement selection sort
+		
+	}
+	
+	/**
+	 * Generates an array of random integers and sorts it using the Merge Sort algorithm.
+	 * @param size - the size of the array
+	 * @param lowerBound - the lower bound of generated values (exclusive)
+	 * @param upperBound - the upper bound of generated values (exclusive)
+	 */
+	public static void mergeSort(int size, int lowerBound, int upperBound) {
+		// TODO: implement merge sort
+		
+	}
+	
+	/**
+	 * Generates an array of random integers and sorts it using the Quick Sort algorithm.
+	 * @param size - the size of the array
+	 * @param lowerBound - the lower bound of generated values (exclusive)
+	 * @param upperBound - the upper bound of generated values (exclusive)
+	 */
+	public static void quickSort(int size, int lowerBound, int upperBound) {
+		// TODO: implement quick sort
+		
+	}
 }

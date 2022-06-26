@@ -284,24 +284,29 @@ public class Lab4binsearchTest {
 			// Exit sub-menu
 			case MENU_SORT_RETURN: break;	// handled by outer loop
 			
-			// TODO: Bubble sort 
+			// Bubble sort 
 			case MENU_SORT_BUBBLE:
+				SearchAndSort.bubbleSort(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
 				break;
 				
-			// TODO: Insertion sort
+			// Insertion sort
 			case MENU_SORT_INSERT:
+				SearchAndSort.insertionSort(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
 				break;
 				
-			// TODO: Selection sort
+			// Selection sort
 			case MENU_SORT_SELECT:
+				SearchAndSort.selectionSort(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
 				break;
 				
-			// TODO: Merge sort
+			// Merge sort
 			case MENU_SORT_MERGE:
+				SearchAndSort.mergeSort(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
 				break;
 			
-			// TODO: Quick sort
+			// Quick sort
 			case MENU_SORT_QUICK:
+				SearchAndSort.quickSort(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
 				break;
 			
 			// Invalid option
