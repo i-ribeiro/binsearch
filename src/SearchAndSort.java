@@ -249,7 +249,24 @@ public class SearchAndSort {
 	 * @param upperBound - the upper bound of generated values (exclusive)
 	 */
 	public static void insertionSort(int size, int lowerBound, int upperBound) {
-		//TODO: implement insertion sort
+		
+		int[] array = generateRandomInts(size, lowerBound, upperBound, false);
+		
+		System.out.print("Insertion sort: Simple sorting algorithm - O(n2) Complexity - in-place \n\n");
+		
+		for (int i = 0; i < array.length; ++i) {	// expand sorted partition,
+			for (int j = 0; j < i+1; ++j) {				// sort sorted partition
+				
+				if (array[i] < array[j]) {					// if values are out of order,
+					
+					int buffer = array[i];						// swap
+					array[i] = array[j];
+					array[j] = buffer;
+				}
+			}
+		}
+		
+		System.out.print(Arrays.toString(array) + "\n\n");
 		
 	}
 	
