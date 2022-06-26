@@ -191,13 +191,20 @@ public class Lab4binsearchTest {
 	 */
 	private static void printMenuOptions() {
 		
-		System.out.print(
+		System.out.printf(
 				"Select your option in the menu below: \n"
-				+ "1. Initialize and populate an array of 20 random integers. \n"
-				+ "2. Perform a recursive binary search. \n"
-				+ "3. Perform a non-recursive binary search. \n"
-				+ "4. Exit. \n"
-				+ " >");
+				+ "%d. Initialize and populate an array of %d random integers. \n"
+				+ "%d. Perform a recursive binary search. \n"
+				+ "%d. Perform a non-recursive binary search. \n"
+				+ "%d. Sort the array \n"
+				+ "%d. Exit. \n"
+				+ " >",
+				MENU_GENERATE,
+				TEST_SIZE,
+				MENU_RSEARCH,
+				MENU_NRSEARCH,
+				MENU_SORT,
+				MENU_EXIT);
 	}
 	
 	/**
