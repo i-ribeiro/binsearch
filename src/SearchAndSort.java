@@ -277,8 +277,28 @@ public class SearchAndSort {
 	 * @param upperBound - the upper bound of generated values (exclusive)
 	 */
 	public static void selectionSort(int size, int lowerBound, int upperBound) {
-		// TODO: implement selection sort
 		
+		int[] array = generateRandomInts(size, lowerBound, upperBound, false);
+		int[] sorted = new int[array.length];
+		
+		System.out.print("Insertion sort: Simple sorting algorithm - O(n2) Complexity - not in-place \n\n");
+		
+		// for each element,
+		for (int i = 0; i < array.length; ++i) {
+			
+			// find lowest remaining value
+			int minIndex = i;
+			for (int j = i+1; j < array.length; ++j)
+				if (array[j] < array[minIndex])
+					minIndex = j;
+			
+			// swap value at i with minimum value
+			int swap = array[minIndex];
+			array[minIndex] = array[i];
+			array[i] = swap;
+		}
+		
+		System.out.print(Arrays.toString(array) + "\n\n");
 	}
 	
 	/**
