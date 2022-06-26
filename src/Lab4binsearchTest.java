@@ -52,6 +52,36 @@ public class Lab4binsearchTest {
 	private static final int MENU_SORT = 4;
 	
 	/**
+	 * Menu option value to sort the integer array using the Bubble Sort algorithm. 
+	 */
+	private static final String MENU_SORT_BUBBLE = "B";
+	
+	/**
+	 * Menu option value to sort the integer array using the Insertion Sort algorithm.
+	 */
+	private static final String MENU_SORT_INSERT = "I";
+	
+	/**
+	 * Menu option value to sort the integer array using the Selection Sort Algorithm.
+	 */
+	private static final String MENU_SORT_SELECT = "S";
+	
+	/**
+	 * Menu option value to sort the integer array using the Merge Sort algorithm.
+	 */
+	private static final String MENU_SORT_MERGE = "M";
+	
+	/**
+	 * Menu option value to sort the integer array using the Quick Sort algorithm.
+	 */
+	private static final String MENU_SORT_QUICK = "Q";
+	
+	/**
+	 * Menu option value to return to the main menu.
+	 */
+	private static final String MENU_SORT_RETURN = "R";
+	
+	/**
 	 * Menu option value to exit.
 	 */
 	private static final int MENU_EXIT = 5;
@@ -167,8 +197,9 @@ public class Lab4binsearchTest {
 				
 				break;
 				
-			// TODO: sort array
+			// sort array
 			case MENU_SORT:
+				sortMenu(keyboard);
 				break;
 				
 			// exit
@@ -209,6 +240,77 @@ public class Lab4binsearchTest {
 				MENU_NRSEARCH,
 				MENU_SORT,
 				MENU_EXIT);
+	}
+	
+	/**
+	 * Sub-menu to sort the array using several algorithms:
+	 * - Bubble sort
+	 * - Insertion sort
+	 * - Selection sort
+	 * - Merge sort
+	 * - Quick sort 
+	 * @param input - user input stream
+	 */
+	private static void sortMenu(Scanner input) {
+		
+		String optionInput = ""; // user option selection
+		
+		// continue prompting until user selects return option
+		while (!optionInput.equals(MENU_SORT_RETURN)) {
+			
+			/* print sub-menu options */
+			System.out.printf(
+					"Select a sorting algorithm to sort the data array \n\n"
+					+ "\t%s. Bubble Sort \n"
+					+ "\t%s. Insertion Sort \n"
+					+ "\t%s. Selection Sort \n"
+					+ "\t%s. Merge Sort \n"
+					+ "\t%s. Quick Sort \n"
+					+ "\t%s. Return to Main Menu \n\n"
+					+ ">",
+					MENU_SORT_BUBBLE,
+					MENU_SORT_INSERT,
+					MENU_SORT_SELECT,
+					MENU_SORT_MERGE,
+					MENU_SORT_QUICK,
+					MENU_SORT_RETURN);
+			
+			optionInput = input.next();
+			
+			
+			/* switch on option selection */
+			
+			switch (optionInput) {
+			
+			// Exit sub-menu
+			case MENU_SORT_RETURN: break;	// handled by outer loop
+			
+			// TODO: Bubble sort 
+			case MENU_SORT_BUBBLE:
+				break;
+				
+			// TODO: Insertion sort
+			case MENU_SORT_INSERT:
+				break;
+				
+			// TODO: Selection sort
+			case MENU_SORT_SELECT:
+				break;
+				
+			// TODO: Merge sort
+			case MENU_SORT_MERGE:
+				break;
+			
+			// TODO: Quick sort
+			case MENU_SORT_QUICK:
+				break;
+			
+			// Invalid option
+			default:
+				System.out.print("Invalid option. Try again. \n\n");
+				break;
+			}
+		} 
 	}
 	
 	/**
