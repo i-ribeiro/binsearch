@@ -43,13 +43,7 @@ public class Lab4binsearchTest {
 		
 		do {
 			// print menu options
-			System.out.print(
-				"Select your option in the menu below: \n"
-				+ "1. Initialize and populate an array of 20 random integers. \n"
-				+ "2. Perform a recursive binary search. \n"
-				+ "3. Perform a non-recursive binary search. \n"
-				+ "4. Exit. \n"
-				+ " >");
+			printMenuOptions();
 			
 			// get input
 			int optionInput = inputInt(keyboard, false);	// -1 on input mismatch
@@ -158,6 +152,20 @@ public class Lab4binsearchTest {
 		
 		// print exit greeting
 		System.out.println("Exiting...Goodbye");
+	}
+	
+	/**
+	 * Helper method to print the main menu options .
+	 */
+	private static void printMenuOptions() {
+		
+		System.out.print(
+				"Select your option in the menu below: \n"
+				+ "1. Initialize and populate an array of 20 random integers. \n"
+				+ "2. Perform a recursive binary search. \n"
+				+ "3. Perform a non-recursive binary search. \n"
+				+ "4. Exit. \n"
+				+ " >");
 	}
 	
 	/**
