@@ -119,7 +119,7 @@ public class Lab4binsearchTest {
 			// generate random array
 			case MENU_GENERATE:
 				System.out.println();
-				numbers = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
+				numbers = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER, true);
 				break;
 				
 			// recursive binary search

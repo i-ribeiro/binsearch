@@ -135,14 +135,15 @@ public class SearchAndSort {
 	}
 	
 	/**
-	 * Uses SecureRandom to generate a sorted array of random integers.
+	 * Uses SecureRandom to generate an array of random integers.
 	 * Prints the generated array to the screen.
 	 * @param size - the size of the array
 	 * @param lowerBound - the lower bound of generated values (exclusive)
 	 * @param upperBound - the upper bound of generated values (exclusive)
+	 * @param sort - whether or not to sort the generated values
 	 * @return the generated array.
 	 */
-	public static int[] generateRandomInts(int size, int lowerBound, int upperBound) {
+	public static int[] generateRandomInts(int size, int lowerBound, int upperBound, boolean sort) {
 		
 		// early out if size is invalid ( <1 )
 		if (size < 1)
@@ -153,7 +154,10 @@ public class SearchAndSort {
 		
 		// generate random values
 		IntStream randInt = new SecureRandom().ints(size, lowerBound + 1, upperBound);
-		int[] values = randInt.sorted().toArray();
+		
+		int[] values = (sort)
+					? randInt.sorted().toArray()
+					: randInt.toArray();
 		
 		// print values
 		System.out.print(Arrays.toString(values) + "\n\n");
