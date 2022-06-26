@@ -167,6 +167,10 @@ public class Lab4binsearchTest {
 				
 				break;
 				
+			// TODO: sort array
+			case MENU_SORT:
+				break;
+				
 			// exit
 			case MENU_EXIT:
 				exitFlag = true;
