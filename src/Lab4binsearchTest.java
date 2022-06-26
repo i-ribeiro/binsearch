@@ -119,7 +119,7 @@ public class Lab4binsearchTest {
 			// generate random array
 			case MENU_GENERATE:
 				System.out.println();
-				numbers = Binarysearch.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
+				numbers = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
 				break;
 				
 			// recursive binary search
@@ -140,7 +140,7 @@ public class Lab4binsearchTest {
 				timeInMillis = System.currentTimeMillis();
 				
 				// search
-				index = Binarysearch.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1);
+				index = SearchAndSort.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1);
 				
 				//time out
 				timeOutNano = System.nanoTime();
@@ -177,7 +177,7 @@ public class Lab4binsearchTest {
 				timeInMillis = System.currentTimeMillis();
 				
 				// search
-				index = Binarysearch.nonRecursiveBinarySearch(numbers, searchVal);
+				index = SearchAndSort.nonRecursiveBinarySearch(numbers, searchVal);
 
 				//time out
 				timeOutNano = System.nanoTime();

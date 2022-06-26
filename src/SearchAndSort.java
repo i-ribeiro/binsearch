@@ -11,7 +11,7 @@ import java.util.Arrays;
  * Professor: James Mwangi PhD. 
  * CET-CS-Level 3
  */
-public class Binarysearch {
+public class SearchAndSort {
 	
 /**** Methods ****/
 	
