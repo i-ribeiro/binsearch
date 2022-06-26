@@ -16,17 +16,17 @@ public class Lab4binsearchTest {
 	/**
 	 * The array size to test.
 	 */
-	private static final int TEST_SIZE = 20;
+	private static final int TEST_SIZE = 1000;
 	
 	/**
 	 * The lower bound of the range of random values to test.
 	 */
-	private static final int TEST_BOUND_LOWER = 10;
+	private static final int TEST_BOUND_LOWER = 120;
 	
 	/**
 	 * The upper bound of the range of random values to test.
 	 */
-	private static final int TEST_BOUND_UPPER = 100;
+	private static final int TEST_BOUND_UPPER = 1000;
 	
 
 /* Menu Constants */
