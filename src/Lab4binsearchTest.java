@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
  * Professor: James Mwangi PhD. 
  * CET-CS-Level 3
  */
-public class Lab3binsearchTest {
+public class Lab4binsearchTest {
 	
 	/**
 	 * The array size to test.
