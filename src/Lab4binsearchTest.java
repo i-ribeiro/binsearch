@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 
 /**
@@ -301,7 +302,13 @@ public class Lab4binsearchTest {
 				
 			// Merge sort
 			case MENU_SORT_MERGE:
-				SearchAndSort.mergeSort(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
+				int[] array = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER, false);
+				
+				System.out.print("Merge sort: Simple sorting algorithm - O(n2) Complexity - not in-place \n\n");
+				
+				SearchAndSort.mergeSort(array, 0, array.length-1);
+				
+				System.out.print(Arrays.toString(array) + "\n\n");
 				break;
 			
 			// Quick sort

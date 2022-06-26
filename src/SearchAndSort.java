@@ -303,13 +303,47 @@ public class SearchAndSort {
 	
 	/**
 	 * Generates an array of random integers and sorts it using the Merge Sort algorithm.
-	 * @param size - the size of the array
-	 * @param lowerBound - the lower bound of generated values (exclusive)
-	 * @param upperBound - the upper bound of generated values (exclusive)
+	 * @param array - the array of integers to sort.
+	 * @param lower - the low index.
+	 * @param upper - the upper index.
 	 */
-	public static void mergeSort(int size, int lowerBound, int upperBound) {
-		// TODO: implement merge sort
-		
+	public static void mergeSort(int[] array, int lower, int upper) {
+
+		if (lower < upper) {	// stop subdividing when subdivision is just one element
+			
+			int middle = lower + (upper - lower) / 2;	// middle index
+			
+		/* subdivide array recursively */
+			
+			mergeSort(array, lower, middle);		// lower half
+			mergeSort(array, middle+1, upper);		// upper half
+			
+		/* merge subdivisions */
+			
+			int szL = middle - lower + 1,		// sizeof lower half
+				szU = upper - middle;			// sizeof upper half
+			
+			int[] bufL = new int[szL];		// lower half buffer
+			int[] bufU = new int[szU];		// upper half buffer
+			
+			/* copy values to buffers */
+			for(int i = 0; i < szL; ++i)	bufL[i] = array[lower + i];
+			for(int i = 0; i < szU; ++i)	bufU[i] = array[middle + 1 + i];
+			
+			/* merge buffers into array */
+			int i = 0,		// arr1 index 
+				j = 0,		// arr2 index
+				k = lower; 	// array index to merge into
+			while (i < szL && j < szU)	// until a buffer has been fully merged,
+				array[k++]
+					= (bufL[i] <= bufU[j])	// merge buffer values in sort order
+					? bufL[i++] 
+					: bufU[j++];
+			
+			/* apply any remaining buffer elements */
+			while(i < szL)	array[k++] = bufL[i++];
+			while(j < szU)	array[k++] = bufU[j++];
+		}
 	}
 	
 	/**
