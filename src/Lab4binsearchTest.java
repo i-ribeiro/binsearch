@@ -143,6 +143,7 @@ public class Lab4binsearchTest {
 				// search
 				index = SearchAndSort.recursiveBinarySearch(numbersSorted, searchVal, 0, numbers.length - 1);
 				
+				System.out.println("\nRecursive binary search: ");
 				break;
 				
 			// non-recursive binary search
@@ -160,6 +161,7 @@ public class Lab4binsearchTest {
 				// search
 				index = SearchAndSort.nonRecursiveBinarySearch(numbersSorted, searchVal);
 				
+				System.out.println("\nNon-recursive binary search: ");
 				break;
 				
 			// sort array
@@ -188,8 +190,6 @@ public class Lab4binsearchTest {
 			
 			if (optionInput == MENU_RSEARCH
 				|| optionInput == MENU_NRSEARCH) {
-				
-				System.out.println();
 				
 				// if index is valid, the value was found
 				if (index >= 0)
