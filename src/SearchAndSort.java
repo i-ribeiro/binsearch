@@ -210,6 +210,8 @@ public class SearchAndSort {
 	
 	/**
 	 * Generates an array of random integers and sorts it using the Bubble Sort algorithm.
+	 * Modifies the source array.
+	 * Simple sorting algorithm  - O(n2) Complexity - in-place
 	 * @param array - the array of integers to sort.
 	 */
 	public static void bubbleSort(int[] array) {
@@ -235,7 +237,9 @@ public class SearchAndSort {
 	}
 	
 	/**
-	 * Generates an array of random integers and sorts it using the Insertion Sort algorithm.
+	 * Sorts an array of random integers using the Insertion Sort algorithm.
+	 * Modifies the source array.
+	 * Simple sorting algorithm  - O(n2) Complexity - in-place
 	 * @param array - the array of integers to sort.
 	 */
 	public static void insertionSort(int[] array) {
@@ -255,7 +259,9 @@ public class SearchAndSort {
 	}
 	
 	/**
-	 * Generates an array of random integers and sorts it using the Selection Sort algorithm.
+	 * Sorts an array of random integers using the Selection Sort algorithm.
+	 * Modifies the source array.
+	 * Simple sorting algorithm  - O(n2) Complexity - in-place
 	 * @param array - the array of integers to sort.
 	 */
 	public static void selectionSort(int[] array) {
@@ -277,7 +283,9 @@ public class SearchAndSort {
 	}
 	
 	/**
-	 * Generates an array of random integers and sorts it using the Merge Sort algorithm.
+	 * Sorts an array of random integers using the Merge Sort algorithm.
+	 * Modifies the source array.
+	 * Recursive Divide-And-Conquer - O(n log n) Complexity - not in-place
 	 * @param array - the array of integers to sort.
 	 * @param lower - the low index.
 	 * @param upper - the upper index.
@@ -322,8 +330,9 @@ public class SearchAndSort {
 	}
 	
 	/**
-	 * Sorts an array of integer using the Quick Sort algorithm.
-	 * Recursive Divide-And-Conquer - O(n log n) Complexity
+	 * Sorts an array of integer using the QuickSort algorithm.
+	 * Modifies the source array.
+	 * Recursive Divide-And-Conquer - O(n log n) Complexity - in-place
 	 * @param array - the array of integers to sort.
 	 * @param lower - the low index.
 	 * @param upper - the upper index.

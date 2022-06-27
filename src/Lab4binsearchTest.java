@@ -239,11 +239,12 @@ public class Lab4binsearchTest {
 	 * - Insertion sort
 	 * - Selection sort
 	 * - Merge sort
-	 * - Quick sort 
+	 * - Quick sort
+	 * Does not modify the source array.
 	 * @param input - user input stream
 	 * @param array - values to sort
 	 */
-	private static void sortMenu(Scanner input, final int[] array) {
+	private static void sortMenu(Scanner input, int[] array) {
 		
 		String optionInput = ""; // user option selection
 		
