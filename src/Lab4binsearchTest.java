@@ -279,6 +279,7 @@ public class Lab4binsearchTest {
 			
 			
 			/* switch on option selection */
+			int[] array;
 			
 			switch (optionInput) {
 			
@@ -302,7 +303,7 @@ public class Lab4binsearchTest {
 				
 			// Merge sort
 			case MENU_SORT_MERGE:
-				int[] array = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER, false);
+				array = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER, false);
 				
 				System.out.print("Merge sort: Simple sorting algorithm - O(n2) Complexity - not in-place \n\n");
 				
@@ -313,7 +314,13 @@ public class Lab4binsearchTest {
 			
 			// Quick sort
 			case MENU_SORT_QUICK:
-				SearchAndSort.quickSort(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
+				array = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER, false);
+				
+				System.out.print("Merge sort: Simple sorting algorithm - O(n2) Complexity - not in-place \n\n");
+				
+				SearchAndSort.quickSort(array, 0, array.length-1);
+				
+				System.out.print(Arrays.toString(array) + "\n\n");
 				break;
 			
 			// Invalid option

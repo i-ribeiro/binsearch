@@ -347,13 +347,40 @@ public class SearchAndSort {
 	}
 	
 	/**
-	 * Generates an array of random integers and sorts it using the Quick Sort algorithm.
-	 * @param size - the size of the array
-	 * @param lowerBound - the lower bound of generated values (exclusive)
-	 * @param upperBound - the upper bound of generated values (exclusive)
+	 * Sorts an array of integer using the Quick Sort algorithm.
+	 * Recursive Divide-And-Conquer - O(n log n) Complexity
+	 * @param array - the array of integers to sort.
+	 * @param lower - the low index.
+	 * @param upper - the upper index.
 	 */
-	public static void quickSort(int size, int lowerBound, int upperBound) {
-		// TODO: implement quick sort
+	public static void quickSort(int[] array, int lower, int upper) {
 		
+		if (lower < upper) {	// stop subdividing when subdivision is just one element
+			
+			int pivot = array[upper],	// pivot is value at highest index 
+				i = lower - 1,
+				swap;
+			
+			/* compare each element with pivot */
+			for (int j = lower; j < upper; ++j) {
+				
+				if (array[j] < pivot) {		// if value smaller than pivot is found,
+					
+					swap = array[++i];			// swap it with i
+					array[i] = array[j];
+					array[j] = swap;
+				}
+			}
+			
+			int subdIndex = i + 1;	// the index between the two subdivisions 
+			swap = array[subdIndex];	// swap upper value with next value
+			array[subdIndex] = array[upper];
+			array[upper] = swap;
+			
+		/* subdivide array recursively */
+			
+			quickSort(array, lower, subdIndex-1);
+			quickSort(array, subdIndex+1, upper);
+		}
 	}
 }
