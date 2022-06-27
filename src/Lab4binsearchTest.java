@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 
 /**
@@ -52,6 +53,36 @@ public class Lab4binsearchTest {
 	private static final int MENU_SORT = 4;
 	
 	/**
+	 * Menu option value to sort the integer array using the Bubble Sort algorithm. 
+	 */
+	private static final String MENU_SORT_BUBBLE = "B";
+	
+	/**
+	 * Menu option value to sort the integer array using the Insertion Sort algorithm.
+	 */
+	private static final String MENU_SORT_INSERT = "I";
+	
+	/**
+	 * Menu option value to sort the integer array using the Selection Sort Algorithm.
+	 */
+	private static final String MENU_SORT_SELECT = "S";
+	
+	/**
+	 * Menu option value to sort the integer array using the Merge Sort algorithm.
+	 */
+	private static final String MENU_SORT_MERGE = "M";
+	
+	/**
+	 * Menu option value to sort the integer array using the Quick Sort algorithm.
+	 */
+	private static final String MENU_SORT_QUICK = "Q";
+	
+	/**
+	 * Menu option value to return to the main menu.
+	 */
+	private static final String MENU_SORT_RETURN = "R";
+	
+	/**
 	 * Menu option value to exit.
 	 */
 	private static final int MENU_EXIT = 5;
@@ -66,7 +97,6 @@ public class Lab4binsearchTest {
 		
 		Scanner keyboard = new Scanner(System.in);		// user input stream from keyboard
 		
-		Binarysearch binsearch = new Binarysearch();	// Binarysearch object to test
 		int[] numbers = null;
 		
 		/* Main menu loop */
@@ -90,7 +120,7 @@ public class Lab4binsearchTest {
 			// generate random array
 			case MENU_GENERATE:
 				System.out.println();
-				numbers = binsearch.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
+				numbers = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER, false);
 				break;
 				
 			// recursive binary search
@@ -111,7 +141,7 @@ public class Lab4binsearchTest {
 				timeInMillis = System.currentTimeMillis();
 				
 				// search
-				index = binsearch.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1);
+				index = SearchAndSort.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1);
 				
 				//time out
 				timeOutNano = System.nanoTime();
@@ -148,7 +178,7 @@ public class Lab4binsearchTest {
 				timeInMillis = System.currentTimeMillis();
 				
 				// search
-				index = binsearch.nonRecursiveBinarySearch(numbers, searchVal);
+				index = SearchAndSort.nonRecursiveBinarySearch(numbers, searchVal);
 
 				//time out
 				timeOutNano = System.nanoTime();
@@ -167,8 +197,15 @@ public class Lab4binsearchTest {
 				
 				break;
 				
-			// TODO: sort array
+			// sort array
 			case MENU_SORT:
+				
+				if (numbers != null)
+					sortMenu(keyboard, numbers);
+				
+				// warn and abort sort if values haven't been generated
+				else System.out.println("Generate values first.");
+				
 				break;
 				
 			// exit
@@ -209,6 +246,143 @@ public class Lab4binsearchTest {
 				MENU_NRSEARCH,
 				MENU_SORT,
 				MENU_EXIT);
+	}
+	
+	/**
+	 * Sub-menu to sort the array using several algorithms:
+	 * - Bubble sort
+	 * - Insertion sort
+	 * - Selection sort
+	 * - Merge sort
+	 * - Quick sort 
+	 * @param input - user input stream
+	 * @param array - values to sort
+	 */
+	private static void sortMenu(Scanner input, final int[] array) {
+		
+		String optionInput = ""; // user option selection
+		
+		// continue prompting until user selects return option
+		while (!optionInput.equals(MENU_SORT_RETURN)) {
+			
+			/* print sub-menu options */
+			System.out.printf(
+					"Select a sorting algorithm to sort the data array \n\n"
+					+ "\t%s. Bubble Sort \n"
+					+ "\t%s. Insertion Sort \n"
+					+ "\t%s. Selection Sort \n"
+					+ "\t%s. Merge Sort \n"
+					+ "\t%s. Quick Sort \n"
+					+ "\t%s. Return to Main Menu \n\n"
+					+ ">",
+					MENU_SORT_BUBBLE,
+					MENU_SORT_INSERT,
+					MENU_SORT_SELECT,
+					MENU_SORT_MERGE,
+					MENU_SORT_QUICK,
+					MENU_SORT_RETURN);
+			
+			
+			/* get option selection */
+			
+			optionInput = input.next();
+			
+			
+			/* switch on option selection */
+			
+			int[] sorted = null;			// throwaway clones of array parameter
+			if (sorted == null) sorted = array.clone();	// create a new clone if array has been sorted and dereferenced
+			
+			boolean isSorted = false;			// whether the array has been sorted
+			
+			long timeNano = 0, timeMillis = 0;	// start time for sort duration
+			
+			// print initial values and set start time
+			switch (optionInput) {	// if any of the sort options are selected,
+			case MENU_SORT_BUBBLE:
+			case MENU_SORT_INSERT:
+			case MENU_SORT_SELECT:
+			case MENU_SORT_MERGE:
+			case MENU_SORT_QUICK:
+				
+				isSorted = true;					// the array will be sorted
+				System.out.print("\n"
+						+ Arrays.toString(sorted)
+						+ "\n\n");					// print the unsorted values
+				
+				timeNano = System.nanoTime();
+				timeMillis = System.currentTimeMillis();
+				
+				break;
+			}
+			
+			
+			switch (optionInput) {
+			
+			// Exit sub-menu
+			case MENU_SORT_RETURN:
+				
+				isSorted = false;
+				break;	// handled by outer loop
+			
+			// Bubble sort 
+			case MENU_SORT_BUBBLE:
+				
+				System.out.print("Bubble sort: Simple sorting algorithm - O(n2) Complexity - in-place \n\n");
+				SearchAndSort.bubbleSort(sorted);
+				break;
+				
+			// Insertion sort
+			case MENU_SORT_INSERT:
+				
+				System.out.print("Insertion sort: Simple sorting algorithm - O(n2) Complexity - in-place \n\n");
+				SearchAndSort.insertionSort(sorted);
+				break;
+				
+			// Selection sort
+			case MENU_SORT_SELECT:
+				
+				System.out.print("Selection sort: Simple sorting algorithm - O(n2) Complexity - in-place \n\n");
+				SearchAndSort.selectionSort(sorted);
+				break;
+				
+			// Merge sort
+			case MENU_SORT_MERGE:
+				
+				System.out.print("Merge sort: Recursive Divide-and-conquer - O(n log n) Complexity - not in-place \n\n");
+				SearchAndSort.mergeSort(sorted, 0, sorted.length-1);
+				break;
+			
+			// Quick sort
+			case MENU_SORT_QUICK:
+				
+				System.out.print("Quick sort: Recursive Divide-and-conquer - O(n log n) Complexity - in-place \n\n");
+				SearchAndSort.quickSort(sorted, 0, sorted.length-1);
+				break;
+			
+			// Invalid option
+			default:
+				isSorted = false;
+				System.out.print("Invalid option. Try again. \n\n");
+				break;
+			}
+			
+			
+			/* print sorted array and time elapsed */
+			
+			if (isSorted) {		// (if a sort occurred) 
+				
+				System.out.print(Arrays.toString(sorted) + "\n\n");
+				
+				System.out.printf(
+						"Time taken in nanoseconds: %d \n"
+						+ "Time taken in milliseconds: %d \n\n",
+						System.nanoTime() - timeNano,
+						System.currentTimeMillis() - timeMillis);
+				
+				sorted = null;	// dereference sorted array to create a new clone
+			}
+		} 
 	}
 	
 	/**
