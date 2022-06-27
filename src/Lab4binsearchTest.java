@@ -17,7 +17,7 @@ public class Lab4binsearchTest {
 	/**
 	 * The array size to test.
 	 */
-	private static final int TEST_SIZE = 1000;
+	private static final int TEST_SIZE = 25;
 	
 	/**
 	 * The lower bound of the range of random values to test.
@@ -97,7 +97,8 @@ public class Lab4binsearchTest {
 		
 		Scanner keyboard = new Scanner(System.in);		// user input stream from keyboard
 		
-		int[] numbers = null;
+		int[] numbers = null,
+				numbersSorted = null;
 		
 		/* Main menu loop */
 		
@@ -111,9 +112,11 @@ public class Lab4binsearchTest {
 			int optionInput = inputInt(keyboard, false);	// -1 on input mismatch
 			
 			
-			int searchVal, index;
-			long timeInNano, timeOutNano;
-			long timeInMillis, timeOutMillis;
+			int searchVal = 0, index = 0;
+			
+			// time in
+			long timeInNano = System.nanoTime(),
+					timeInMillis = System.currentTimeMillis();
 			
 			switch (optionInput) {
 			
@@ -121,6 +124,8 @@ public class Lab4binsearchTest {
 			case MENU_GENERATE:
 				System.out.println();
 				numbers = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER, false);
+				numbersSorted = numbers.clone();
+				SearchAndSort.quickSort(numbersSorted, 0, numbersSorted.length-1);
 				break;
 				
 			// recursive binary search
@@ -135,28 +140,8 @@ public class Lab4binsearchTest {
 				System.out.print("Please enter an integer value to search: ");
 				searchVal = inputInt(keyboard, true);
 				
-				
-				// time in
-				timeInNano = System.nanoTime();
-				timeInMillis = System.currentTimeMillis();
-				
 				// search
-				index = SearchAndSort.recursiveBinarySearch(numbers, searchVal, 0, numbers.length - 1);
-				
-				//time out
-				timeOutNano = System.nanoTime();
-				timeOutMillis = System.currentTimeMillis();
-				
-				
-				// if index is valid, the value was found
-				if (index >= 0)
-					System.out.printf("Number %d was found at index %d. \n", searchVal, index);
-				
-				else System.out.printf("Number %d was not found. \n", searchVal);
-				
-				// print time
-				System.out.printf("Time taken in nanoseconds: %d \n", timeOutNano - timeInNano);
-				System.out.printf("Time taken in milliseconds: %d \n\n", timeOutMillis - timeInMillis);
+				index = SearchAndSort.recursiveBinarySearch(numbersSorted, searchVal, 0, numbers.length - 1);
 				
 				break;
 				
@@ -171,29 +156,9 @@ public class Lab4binsearchTest {
 				// input search value
 				System.out.print("Please enter an integer value to search: ");
 				searchVal = inputInt(keyboard, true);
-
-				
-				// time in
-				timeInNano = System.nanoTime();
-				timeInMillis = System.currentTimeMillis();
 				
 				// search
-				index = SearchAndSort.nonRecursiveBinarySearch(numbers, searchVal);
-
-				//time out
-				timeOutNano = System.nanoTime();
-				timeOutMillis = System.currentTimeMillis();
-				
-				
-				// if index is valid, the value was found
-				if (index >= 0)
-					System.out.printf("Number %d was found at index %d. \n", searchVal, index);
-				
-				else System.out.printf("Number %d was not found. \n", searchVal);
-				
-				// print time
-				System.out.printf("Time taken in nanoseconds: %d \n", timeOutNano - timeInNano);
-				System.out.printf("Time taken in milliseconds: %d \n\n", timeOutMillis - timeInMillis);
+				index = SearchAndSort.nonRecursiveBinarySearch(numbersSorted, searchVal);
 				
 				break;
 				
@@ -216,6 +181,26 @@ public class Lab4binsearchTest {
 			default:
 				System.out.println("Invalid input...try again");
 				break;
+			}
+			
+			
+			// if a search was done, print the search report 
+			
+			if (optionInput == MENU_RSEARCH
+				|| optionInput == MENU_NRSEARCH) {
+				
+				// if index is valid, the value was found
+				if (index >= 0)
+					System.out.printf("Number %d was found at index %d. \n", searchVal, index);
+				
+				else System.out.printf("Number %d was not found. \n", searchVal);
+				
+				// print time
+				System.out.printf(
+						"Time taken in nanoseconds: %d \n"
+						+ "Time taken in milliseconds: %d \n\n",
+						System.nanoTime()- timeInNano, 
+						System.currentTimeMillis() - timeInMillis);
 			}
 			
 		} while (exitFlag == false);	// stop loop if user selects Exit
