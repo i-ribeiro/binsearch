@@ -189,6 +189,8 @@ public class Lab4binsearchTest {
 			if (optionInput == MENU_RSEARCH
 				|| optionInput == MENU_NRSEARCH) {
 				
+				System.out.println();
+				
 				// if index is valid, the value was found
 				if (index >= 0)
 					System.out.printf("Number %d was found at index %d. \n", searchVal, index);

@@ -183,21 +183,6 @@ public class SearchAndSort {
 		final int spacing = Integer.toString(array[array.length-1]).length() + 1;
 		
 		
-		/* calculate the offset*/
-		final int fullWidth = array.length * spacing;							// the printed size of the full array
-		final int remainingWidth = (1 + lastIndex - firstIndex) * spacing;		// the printed size of the remaining array
-		final int offset = (fullWidth - remainingWidth) / 2;					// the left-offset to center the remaining array below the full array
-		
-		
-		/* print offset if not negative or zero */
-		
-		if (offset > 0)
-		{
-			String offsetFormat = String.format("%ds", offset);				// #s		-- eg. 20s 
-			System.out.printf('%'+offsetFormat, "");						// % + #s 	-- eg. %20s
-		}
-		
-		
 		/* print elements */
 		
 		String format = String.format("%dd", -spacing);						// #d		-- eg. -4d
@@ -205,7 +190,7 @@ public class SearchAndSort {
 		for (int i = firstIndex; i <= lastIndex; ++i)						// % + #d	-- eg. %-4d
 			System.out.printf('%'+format, array[i]);
 		
-		System.out.print("\n\n");
+		System.out.println();
 	}
 	
 	/**

@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Binarysearch"},{"p":"<Unnamed>","l":"Lab3binsearchTest"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Lab4binsearchTest"},{"p":"<Unnamed>","l":"SearchAndSort"}];updateSearchResults();
