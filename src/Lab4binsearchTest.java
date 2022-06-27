@@ -120,7 +120,7 @@ public class Lab4binsearchTest {
 			// generate random array
 			case MENU_GENERATE:
 				System.out.println();
-				numbers = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER, true);
+				numbers = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER, false);
 				break;
 				
 			// recursive binary search
@@ -199,7 +199,13 @@ public class Lab4binsearchTest {
 				
 			// sort array
 			case MENU_SORT:
-				sortMenu(keyboard);
+				
+				if (numbers != null)
+					sortMenu(keyboard, numbers);
+				
+				// warn and abort sort if values haven't been generated
+				else System.out.println("Generate values first.");
+				
 				break;
 				
 			// exit
@@ -250,8 +256,9 @@ public class Lab4binsearchTest {
 	 * - Merge sort
 	 * - Quick sort 
 	 * @param input - user input stream
+	 * @param array - values to sort
 	 */
-	private static void sortMenu(Scanner input) {
+	private static void sortMenu(Scanner input, final int[] array) {
 		
 		String optionInput = ""; // user option selection
 		
@@ -275,58 +282,93 @@ public class Lab4binsearchTest {
 					MENU_SORT_QUICK,
 					MENU_SORT_RETURN);
 			
+			
+			/* get option selection */
+			
 			optionInput = input.next();
 			
 			
 			/* switch on option selection */
-			int[] array;
+			
+			int[] sorted = null;			// throwaway clones of array parameter
+			if (sorted == null) sorted = array.clone();	// create a new clone if array has been sorted and dereferenced
+			
+			boolean isSorted = false;			// whether the array has been sorted
+			
+			// print initial values
+			switch (optionInput) {	// if any of the sort options are selected,
+			case MENU_SORT_BUBBLE:
+			case MENU_SORT_INSERT:
+			case MENU_SORT_SELECT:
+			case MENU_SORT_MERGE:
+			case MENU_SORT_QUICK:
+				
+				isSorted = true;					// the array will be sorted
+				System.out.print("\n"
+						+ Arrays.toString(sorted)
+						+ "\n\n");					// print the unsorted values
+				break;
+			}
+			
 			
 			switch (optionInput) {
 			
 			// Exit sub-menu
-			case MENU_SORT_RETURN: break;	// handled by outer loop
+			case MENU_SORT_RETURN:
+				
+				isSorted = false;
+				break;	// handled by outer loop
 			
 			// Bubble sort 
 			case MENU_SORT_BUBBLE:
-				SearchAndSort.bubbleSort(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
+				
+				System.out.print("Bubble sort: Simple sorting algorithm - O(n2) Complexity - in-place \n\n");
+				SearchAndSort.bubbleSort(sorted);
 				break;
 				
 			// Insertion sort
 			case MENU_SORT_INSERT:
-				SearchAndSort.insertionSort(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
+				
+				System.out.print("Insertion sort: Simple sorting algorithm - O(n2) Complexity - in-place \n\n");
+				SearchAndSort.insertionSort(sorted);
 				break;
 				
 			// Selection sort
 			case MENU_SORT_SELECT:
-				SearchAndSort.selectionSort(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER);
+				
+				System.out.print("Selection sort: Simple sorting algorithm - O(n2) Complexity - in-place \n\n");
+				SearchAndSort.selectionSort(sorted);
 				break;
 				
 			// Merge sort
 			case MENU_SORT_MERGE:
-				array = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER, false);
 				
-				System.out.print("Merge sort: Simple sorting algorithm - O(n2) Complexity - not in-place \n\n");
-				
-				SearchAndSort.mergeSort(array, 0, array.length-1);
-				
-				System.out.print(Arrays.toString(array) + "\n\n");
+				System.out.print("Merge sort: Recursive Divide-and-conquer - O(n log n) Complexity - not in-place \n\n");
+				SearchAndSort.mergeSort(sorted, 0, sorted.length-1);
 				break;
 			
 			// Quick sort
 			case MENU_SORT_QUICK:
-				array = SearchAndSort.generateRandomInts(TEST_SIZE, TEST_BOUND_LOWER, TEST_BOUND_UPPER, false);
 				
-				System.out.print("Merge sort: Simple sorting algorithm - O(n2) Complexity - not in-place \n\n");
-				
-				SearchAndSort.quickSort(array, 0, array.length-1);
-				
-				System.out.print(Arrays.toString(array) + "\n\n");
+				System.out.print("Quick sort: Recursive Divide-and-conquer - O(n log n) Complexity - in-place \n\n");
+				SearchAndSort.quickSort(sorted, 0, sorted.length-1);
 				break;
 			
 			// Invalid option
 			default:
+				isSorted = false;
 				System.out.print("Invalid option. Try again. \n\n");
 				break;
+			}
+			
+			
+			/* print sorted array */
+			
+			if (isSorted) {		// (if a sort occurred) 
+				
+				System.out.print(Arrays.toString(sorted) + "\n\n");
+				
+				sorted = null;	// dereference sorted array to create a new clone
 			}
 		} 
 	}

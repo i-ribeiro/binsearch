@@ -210,15 +210,9 @@ public class SearchAndSort {
 	
 	/**
 	 * Generates an array of random integers and sorts it using the Bubble Sort algorithm.
-	 * @param size - the size of the array
-	 * @param lowerBound - the lower bound of generated values (exclusive)
-	 * @param upperBound - the upper bound of generated values (exclusive)
+	 * @param array - the array of integers to sort.
 	 */
-	public static void bubbleSort(int size, int lowerBound, int upperBound) {
-		
-		int[] array = generateRandomInts(size, lowerBound, upperBound, false);
-		
-		System.out.print("Bubble sort: Simple sorting algorithm - O(n2) Complexity - in-place \n\n");
+	public static void bubbleSort(int[] array) {
 		
 		boolean sorted = false;
 		
@@ -238,21 +232,13 @@ public class SearchAndSort {
 				}
 			}
 		}
-		
-		System.out.print(Arrays.toString(array) + "\n\n");
 	}
 	
 	/**
 	 * Generates an array of random integers and sorts it using the Insertion Sort algorithm.
-	 * @param size - the size of the array
-	 * @param lowerBound - the lower bound of generated values (exclusive)
-	 * @param upperBound - the upper bound of generated values (exclusive)
+	 * @param array - the array of integers to sort.
 	 */
-	public static void insertionSort(int size, int lowerBound, int upperBound) {
-		
-		int[] array = generateRandomInts(size, lowerBound, upperBound, false);
-		
-		System.out.print("Insertion sort: Simple sorting algorithm - O(n2) Complexity - in-place \n\n");
+	public static void insertionSort(int[] array) {
 		
 		for (int i = 0; i < array.length; ++i) {	// expand sorted partition,
 			for (int j = 0; j < i+1; ++j) {				// sort sorted partition
@@ -266,22 +252,13 @@ public class SearchAndSort {
 			}
 		}
 		
-		System.out.print(Arrays.toString(array) + "\n\n");
-		
 	}
 	
 	/**
 	 * Generates an array of random integers and sorts it using the Selection Sort algorithm.
-	 * @param size - the size of the array
-	 * @param lowerBound - the lower bound of generated values (exclusive)
-	 * @param upperBound - the upper bound of generated values (exclusive)
+	 * @param array - the array of integers to sort.
 	 */
-	public static void selectionSort(int size, int lowerBound, int upperBound) {
-		
-		int[] array = generateRandomInts(size, lowerBound, upperBound, false);
-		int[] sorted = new int[array.length];
-		
-		System.out.print("Insertion sort: Simple sorting algorithm - O(n2) Complexity - not in-place \n\n");
+	public static void selectionSort(int[] array) {
 		
 		// for each element,
 		for (int i = 0; i < array.length; ++i) {
@@ -297,8 +274,6 @@ public class SearchAndSort {
 			array[minIndex] = array[i];
 			array[i] = swap;
 		}
-		
-		System.out.print(Arrays.toString(array) + "\n\n");
 	}
 	
 	/**
