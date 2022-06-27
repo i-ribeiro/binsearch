@@ -295,7 +295,9 @@ public class Lab4binsearchTest {
 			
 			boolean isSorted = false;			// whether the array has been sorted
 			
-			// print initial values
+			long timeNano = 0, timeMillis = 0;	// start time for sort duration
+			
+			// print initial values and set start time
 			switch (optionInput) {	// if any of the sort options are selected,
 			case MENU_SORT_BUBBLE:
 			case MENU_SORT_INSERT:
@@ -307,6 +309,10 @@ public class Lab4binsearchTest {
 				System.out.print("\n"
 						+ Arrays.toString(sorted)
 						+ "\n\n");					// print the unsorted values
+				
+				timeNano = System.nanoTime();
+				timeMillis = System.currentTimeMillis();
+				
 				break;
 			}
 			
@@ -362,11 +368,17 @@ public class Lab4binsearchTest {
 			}
 			
 			
-			/* print sorted array */
+			/* print sorted array and time elapsed */
 			
 			if (isSorted) {		// (if a sort occurred) 
 				
 				System.out.print(Arrays.toString(sorted) + "\n\n");
+				
+				System.out.printf(
+						"Time taken in nanoseconds: %d \n"
+						+ "Time taken in milliseconds: %d \n\n",
+						System.nanoTime() - timeNano,
+						System.currentTimeMillis() - timeMillis);
 				
 				sorted = null;	// dereference sorted array to create a new clone
 			}
